@@ -3,14 +3,66 @@
 <head>
     <title>Add New Book</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        if (param.fromLogin) {
-            alert("Login successful");
-        }
-    </script>
 </head>
-<body class="bg-blue-50 font-sans leading-normal tracking-normal">
+<style>
+
+    /* Slide to the right and fade out animation */
+    @keyframes slideRightFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        50% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        50% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .fade-in {
+        @apply duration-1000; /* Total animation duration including the initial stay */
+        animation: fadeIn 1s ease forwards;
+        /*animation-delay: 3s; !* Delay the start of the fade-out and slide animation *!*/
+    }
+
+    .slide-right-fade-out {
+        @apply duration-2000; /* Total animation duration including the initial stay */
+        animation: slideRightFadeOut 2s ease forwards;
+        animation-delay: 1s; /* Delay the start of the fade-out and slide animation */
+    }
+
+
+</style>
+<script  th:inline="javascript" th:if="${fromLogin != null && fromLogin == true}">
+    let fromLogin = true;
+    console.log(fromLogin);
+
+</script>
+<body class="bg-blue-50 font-sans leading-normal tracking-normal overflow-hidden">
+
+
 <div class="flex items-center">
+<!--    <div th:if="${fromLogin != null && fromLogin == true}" class="w-full  items-center bg-blue-900 absolute top-10">-->
+        <div class="absolute flex w-full justify-end fade-in   top-10 right-0 mr-5" th:if="${fromLogin != null && fromLogin == true}" >
+            <h2 class="py-2 p-10 rounded-xl border slide-right-fade-out border-blue-700  ">Login successfully. Welcome to Book Store!</h2>
+         </div>
+<!--    </div>-->
     <div class="flex flex-col w-1/2 items-center justify-center h-screen">
         <h2 class="text-2xl font-bold leading-7 text-blue-900 mt-8">Add New Book</h2>
         <form action="#" th:action="@{/books}" method="post" class="w-full max-w-lg mt-4 mb-8 p-6 bg-white rounded-2xl shadow-md">

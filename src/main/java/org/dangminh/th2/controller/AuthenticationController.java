@@ -23,6 +23,8 @@ public class AuthenticationController {
     public String login(String username, String password, RedirectAttributes attributes, Model model) {
         if (username.equals("admin") && password.equals("admin")) {
             attributes.addFlashAttribute("fromLogin", true);
+            model.addAttribute("fromLogin", true);
+
             return "redirect:/books";
         } else {
             model.addAttribute("error", true);
