@@ -6,6 +6,7 @@ services:
     ports:
       - "2003:5432"
     environment:
+      POSTGRES_DB: library_web
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: dangminh49
     volumes:
