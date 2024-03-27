@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 font-sans leading-normal tracking-normal flex items-center justify-center h-screen">
+<div class="w-full max-w-xs">
+    <h2 class="text-center text-2xl font-bold text-blue-900 mb-6">Login</h2>
+    <form action="#" th:action="@{/login}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label class="block text-blue-700 text-sm font-bold mb-2">Username:</label>
+            <input required type="text" name="username" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+        <div class="mb-6">
+            <label class="block text-blue-700 text-sm font-bold mb-2">Password:</label>
+            <input required type="password" name="password" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+        </div>
+    </form>
+    <div th:if="${(param.error != null &&  param.error)|| (error != null && error)}" class="text-red-500 text-xs italic">
+        Login failed. Invalid username or password.
+    </div>
+</div>
+</body>
+</html>
